@@ -26,5 +26,8 @@ public class LoginServlet  extends HttpServlet{
 		
         writer.println("username="+userName);
         writer.println("password="+password);
+        
+        req.setAttribute("result", "This is the result of the servlet call");
+        req.getRequestDispatcher("home.jsp").forward(req, resp);
 	}
 }
