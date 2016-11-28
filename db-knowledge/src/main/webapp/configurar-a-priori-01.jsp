@@ -7,6 +7,9 @@
 	<jsp:body>
 		<form action=<c:url value="/login"/> method="post">
 			<div class="row col-md-6 col-md-offset-3">
+				<h3>Configuracion de A-priori</h3>
+			</div>
+			<div class="row col-md-6 col-md-offset-3">
 				<div class="col-md-6">
 					<p>Soporte Minimo: </p>
 	    		</div>
