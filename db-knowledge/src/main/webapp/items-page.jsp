@@ -27,24 +27,24 @@
 						<div class="col-lg-6 text-center">
 				          	<img src="${pageContext.request.contextPath}/resources/images/coca.png" alt="La Dulcería de Sevilla" width="150" height="150">
 				          	<p>Coca cola 600 ml</p>
-				          	<p><a class="btn btn-primary" href="#" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+				          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregar-carrito.jsp?articulo=1" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
 				        </div>
 				        <div class="col-lg-6 text-center">
 				          	<img src="${pageContext.request.contextPath}/resources/images/coca.png" alt="La Dulcería de Sevilla" width="150" height="150">
 				          	<p>Coca cola 600 ml</p>
-				          	<p><a class="btn btn-primary" href="#" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+				          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregar-carrito.jsp?articulo=1" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
 				        </div>
 					</div>
 			        <div class="col-md-6">
 						<div class="col-lg-6 text-center">
 				          	<img src="${pageContext.request.contextPath}/resources/images/coca.png" alt="La Dulcería de Sevilla" width="150" height="150">
 				          	<p>Coca cola 600 ml</p>
-				          	<p><a class="btn btn-primary" href="#" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+				          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregar-carrito.jsp?articulo=1" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
 				        </div>
 				        <div class="col-lg-6 text-center">
 				          	<img src="${pageContext.request.contextPath}/resources/images/coca.png" alt="La Dulcería de Sevilla" width="150" height="150">
 				          	<p>Coca cola 600 ml</p>
-				          	<p><a class="btn btn-primary" href="#" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+				          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregar-carrito.jsp?articulo=1" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
 				        </div>
 					</div>
 				</div>
