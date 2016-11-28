@@ -93,6 +93,7 @@
 	  			<p>©2016 | Todos los derechos reservados.</p>
 	  			<p>sevilla-dulceria.com.mx: Siempre encuentras todo para tus eventos.</p>
 	  			<p>Miguel Ángel de Quevedo 2779, Formando Hogar, 91897 Veracruz, Ver.</p>
+	  			<a href="${pageContext.request.contextPath}/configurar-a-priori-01.jsp">Panel de Configuración de A-priori</a>
 	  		</div>
 		</div>
     </footer>
