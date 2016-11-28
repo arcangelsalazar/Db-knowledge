@@ -48,7 +48,7 @@
 	        <nav>
 	        	<ul class="nav nav-pills pull-right">
 	            	<li role="presentation" class="active">
-	            		<a href="#">
+	            		<a href="${pageContext.request.contextPath}/mi-carrito.jsp">
 	            			<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 	            			Mi Carrito
 	            		</a>
@@ -75,9 +75,9 @@
 			    </ul>
 			  	<form class="navbar-form navbar-right">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
+						<input name="search" type="text" class="form-control" placeholder="Busqueda">
 					</div>
-					<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+					<button type="submit" value="Submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 			    </form>
 		    </div>
 		</nav>
