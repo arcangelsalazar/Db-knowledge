@@ -1,46 +1,92 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-</head>
-<body>
-	<div class="container">
-		<form action=<c:url value="/login"/> method="post">
-		<div class="row">
-        <div class="col-md-offset-5 col-md-3">
-            <div class="form-login">
-            <h4>Iniciar sesión</h4>
-            <input type="text" name="username" class="form-control input-sm chat-input" placeholder="Usuario" />
-            </br>
-            <input type="text" name="password" type="password" class="form-control input-sm chat-input" placeholder="Contraseña" />
-            </br>
-            <div class="wrapper">
-            <span class="group-btn">     
-                <input class="btn btn-primary btn-md" type="submit" value="Submit">
-            </span>
-            </div>
-            </div>
-        
-        </div>
-		</form>
-	</div>
-</body>
-</html>
+
+<t:genericpage title="Sevilla DulcerÃ­a" bodyClass="body2">
+	<jsp:body>
+		<style>
+	  		.carousel-inner > .item > img,
+	  		.carousel-inner > .item > a > img {
+	      		width: 50%;
+	      		margin: auto;
+	  		}
+	  	</style>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		    <!-- Indicators -->
+		    <ol class="carousel-indicators">
+		    	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		      	<li data-target="#myCarousel" data-slide-to="1"></li>
+		      	<li data-target="#myCarousel" data-slide-to="2"></li>
+		      	<li data-target="#myCarousel" data-slide-to="3"></li>
+		      	<li data-target="#myCarousel" data-slide-to="4"></li>
+		    </ol>
+		
+		    <!-- Wrapper for slides -->
+		    <div class="carousel-inner" role="listbox">
+		      <div class="item active text-center">
+		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
+		      		<h2>Nuestras Bebidas</h2>
+		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
+		      	</a>
+		      </div>
+		      <div class="item text-center">
+		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
+		      		<h2>Nuestras Bebidas</h2>
+		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
+		      	</a>
+		      </div>
+		      <div class="item text-center">
+		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
+		      		<h2>Nuestras Bebidas</h2>
+		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
+		      	</a>
+		      </div>
+		      <div class="item text-center">
+		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
+		      		<h2>Nuestras Bebidas</h2>
+		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
+		      	</a>
+		      </div>
+		      <div class="item text-center">
+		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
+		      		<h2>Nuestras Bebidas</h2>
+		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
+		      	</a>
+		      </div>
+		    </div>
+		
+		    <!-- Left and right controls -->
+		    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		      <span class="sr-only">Anterior</span>
+		    </a>
+		    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		      <span class="sr-only">Siguiente</span>
+		    </a>
+		  </div>
+	</jsp:body>
+</t:genericpage>
+
+<!--  
+<div class="container">
+	<form action=<c:url value="/login"/> method="post">
+	<div class="row">
+       <div class="col-md-offset-5 col-md-3">
+           <div class="form-login">
+           <h4>Iniciar sesiÃ³n</h4>
+           <input type="text" name="username" class="form-control input-sm chat-input" placeholder="Usuario" />
+           </br>
+           <input type="text" name="password" type="password" class="form-control input-sm chat-input" placeholder="ContraseÃ±a" />
+           </br>
+           <div class="wrapper">
+           <span class="group-btn">     
+               <input class="btn btn-primary btn-md" type="submit" value="Submit">
+           </span>
+           </div>
+           </div>
+       </div>
+	</form>
+</div>
+-->
