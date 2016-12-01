@@ -12,14 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/login")
 public class LoginServlet  extends HttpServlet{
 
-	/**
-	 * hola
-	 */
 	private static final long serialVersionUID = -4103143605765885530L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {            
+		request.setAttribute("message", "Productos Ness");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter writer = resp.getWriter();
 		String userName = req.getParameter("username");
 	    String password = req.getParameter("password");
