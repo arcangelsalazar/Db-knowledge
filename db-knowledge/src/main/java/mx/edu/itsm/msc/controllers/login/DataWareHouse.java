@@ -28,8 +28,7 @@ public class DataWareHouse {
                      .master("local[*]")
 	     .getOrCreate();
 
-		Dataset<Row> df = ss.read().option("header", "true").csv("./src/main/resources/movVentas_con_comas.csv");
-		df.show(150,false);
+		Dataset<Row> df = ss.read().option("header", "true").csv("./src/main/resources/movVentas_con_700_Registros.csv");
 		df = df.groupBy(df.col("folio")).pivot("codigo").count().na().fill(0);
 		df.show(150,false);
 		List<Row> list = df.collectAsList();
