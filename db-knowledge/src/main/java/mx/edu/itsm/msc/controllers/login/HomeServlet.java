@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/login")
-public class LoginServlet  extends HttpServlet{
+@WebServlet("/home")
+public class HomeServlet  extends HttpServlet{
 
 	private static final long serialVersionUID = -4103143605765885530L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {            
 		request.setAttribute("message", "Productos Ness");
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 	}
 	
 	@Override
