@@ -50,10 +50,11 @@ public class Cliente {
             return entrada;
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+            return null;
+        } catch (ClassNotFoundException ex) {            
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+            return null;
+        }        
     }
     public void send(Object o){
         try {
