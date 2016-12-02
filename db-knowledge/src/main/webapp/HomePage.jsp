@@ -26,7 +26,7 @@
 		    <div class="carousel-inner" role="listbox">
 		      <div class="item active text-center">
 		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
-		      		<h2>Nuestras Bebidas</h2>
+		      		<h2>${message}</h2>
 		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
 		      	</a>
 		      </div>
