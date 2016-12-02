@@ -24,25 +24,25 @@
 		    <!-- Wrapper for slides -->
 		    <div class="carousel-inner" role="listbox">
 		      <div class="item active text-center">
-		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=populares">
+		      	<a href="${pageContext.request.contextPath}/itemspage?cat=populares">
 		      		<h2>Productos Populares</h2>
 		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel/populares.jpg" alt="Populares" width="270" height="145"> 
 		      	</a>
 		      </div>
 		      <div class="item text-center">
-		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=botanas">
+		      	<a href="${pageContext.request.contextPath}/itemspage?cat=botanas">
 		      		<h2>Botanas</h2>
 		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel/botanas.png" alt="Botanas" width="270" height="145"> 
 		      	</a>
 		      </div>
 		      <div class="item text-center">
-		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=confiteria">
+		      	<a href="${pageContext.request.contextPath}/itemspage?cat=confiteria">
 		      		<h2>Confiteria</h2>
 		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel/confiteria.jpg" alt="Confiteria" width="270" height="145"> 
 		      	</a>
 		      </div>
 		      <div class="item text-center">
-		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=varios">
+		      	<a href="${pageContext.request.contextPath}/itemspage?cat=varios">
 		      		<h2>Varios</h2>
 		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel/desechables.jpg" alt="Varios" width="270" height="145"> 
 		      	</a>
