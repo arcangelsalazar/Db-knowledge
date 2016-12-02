@@ -58,7 +58,7 @@ public class MiCarritoStatusServlet  extends HttpServlet{
 		
 		
 		request.setAttribute("total", "");
-		request.getRequestDispatcher("mi-carrito.jsp").forward(request, response);
+		request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 	}
 	
 	@Override

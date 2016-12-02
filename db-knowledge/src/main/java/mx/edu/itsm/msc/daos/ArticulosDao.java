@@ -38,7 +38,7 @@ public class ArticulosDao {
 	public static String descripcionYPrecio(Integer id){
 		String res = "";
 		try {
-			PreparedStatement stm = DataSource.getInstance().getConnection().prepareStatement("select * from ARTICULOS where id =?");
+			PreparedStatement stm = DataSource.getInstance().getConnection().prepareStatement("select * from ARTICULOS where codigo =?");
 			stm.setInt(1, id);
 			ResultSet rs = stm.executeQuery();
 			
