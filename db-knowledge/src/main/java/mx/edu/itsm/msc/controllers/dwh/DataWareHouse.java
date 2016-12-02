@@ -1,11 +1,11 @@
 package mx.edu.itsm.msc.controllers.dwh;
 
 import java.io.File;
-import java.io.FileFilter;
+import java.net.InetAddress;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.RegexFileFilter;
+import org.apache.derby.drda.NetworkServerControl;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SaveMode;
@@ -17,18 +17,6 @@ public class DataWareHouse {
 	private static String fileOutput = "C:\\TODO\\felix\\AgenteRecomendador\\matriz.csv";
 	private static String interFile = "/var/result";
 	
-	public static void main(String[] args) {
-		DataWareHouseResult dr = DataWareHouse.crearDataWareHouse();
-
-		System.out.println("folio renglon 0: "+dr.getResults().get(0).get(0));
-		System.out.println("producto1 1: "+dr.getResults().get(0).get(1));
-		System.out.println("codigo del producto 1"+dr.getColumns()[1]);
-
-		System.out.println("folio renglon 1: "+dr.getResults().get(1).get(0));
-		System.out.println("producto1 1: "+dr.getResults().get(1).get(1));
-		System.out.println("codigo del producto 1"+dr.getColumns()[1]);
-	}
-
 	public static DataWareHouseResult crearDataWareHouse(){
 		SparkSession ss = SparkSession.builder()
 				.appName("DataWareHouse")
@@ -68,5 +56,25 @@ public class DataWareHouse {
 		dr.setResults(list);
 
 		return dr;
+	}
+	
+	public static void main(String[] args) {
+		try {
+			NetworkServerControl server = new NetworkServerControl(InetAddress.getByName("0.0.0.0"),1527);
+			server.start(null);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
+		
+		DataWareHouseResult dr = DataWareHouse.crearDataWareHouse();
+
+		System.out.println("folio renglon 0: "+dr.getResults().get(0).get(0));
+		System.out.println("producto1 1: "+dr.getResults().get(0).get(1));
+		System.out.println("codigo del producto 1"+dr.getColumns()[1]);
+
+		System.out.println("folio renglon 1: "+dr.getResults().get(1).get(0));
+		System.out.println("producto1 1: "+dr.getResults().get(1).get(1));
+		System.out.println("codigo del producto 1"+dr.getColumns()[1]);
 	}
 }
