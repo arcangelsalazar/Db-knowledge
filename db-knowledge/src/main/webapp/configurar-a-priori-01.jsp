@@ -38,13 +38,11 @@
 				<br/><br/>
 			</div>
 			<div class="row col-md-6 col-md-offset-3 text-center">
-				<span class="group-btn">
-					<div class="wrapper">
-                                        <span class="group-btn">     
-                                            <input class="btn btn-primary btn-md" type="submit" value="Recalcular Algoritmo">
-                                        </span>
-                                    </div>
-				</span>
+				<div class="wrapper">
+                    <span class="group-btn">     
+                        <input class="btn btn-primary btn-danger" type="submit" value="Recalcular Algoritmo">
+                    </span>
+                </div>
 			</div>
 			<div class="row col-md-6 col-md-offset-3 text-center">
 				<br/><br/>
