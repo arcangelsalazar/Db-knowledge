@@ -23,21 +23,33 @@
 			<br/>
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
-			<div class="col-md-4 col-md-offset-1 text-center">
-				<a class="btn btn-danger btn-primary" href="${pageContext.request.contextPath}/micarritostatus?status=cancelar" role="button">
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-					&nbsp;&nbsp;&nbsp;
-					Vaciar Carrito
-					&nbsp;
-				</a>
-			</div>
-			<div class="col-md-4 col-md-offset-1 text-center">
-				<a class="btn btn-primary" href="${pageContext.request.contextPath}/micarritostatus?status=comprar" role="button">
-					<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
-					&nbsp;
-					Finalizar Compra
-				</a>
-			</div>
+			<c:if test="${not empty conArticulos}">	
+				<div class="col-md-4 col-md-offset-1 text-center">
+					<a class="btn btn-danger btn-primary" href="${pageContext.request.contextPath}/micarritostatus?status=cancelar" role="button">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						&nbsp;&nbsp;&nbsp;
+						Vaciar Carrito
+						&nbsp;
+					</a>
+				</div>
+				<div class="col-md-4 col-md-offset-1 text-center">
+					<a class="btn btn-primary" href="${pageContext.request.contextPath}/micarritostatus?status=comprar" role="button">
+						<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+						&nbsp;
+						Finalizar Compra
+					</a>
+				</div>
+			</c:if>
+			<c:if test="${not empty sinArticulos}">	
+				<div class="col-md-4 col-md-offset-1 text-center">
+					<a class="btn btn-danger btn-primary" href="${pageContext.request.contextPath}/home" role="button">
+						<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+						&nbsp;&nbsp;&nbsp;
+						Regresar
+						&nbsp;
+					</a>
+				</div>
+			</c:if>
 		</div>
 	</jsp:body>
 </t:genericpage>
