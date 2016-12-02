@@ -5,24 +5,20 @@ import jade.wrapper.AgentController;
 import java.net.InetAddress;
 import java.sql.Statement;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 
 import mx.edu.itsm.msc.jadecontainer.CondVar;
 import mx.edu.itsm.msc.jadecontainer.Container;
 
 import org.apache.derby.drda.NetworkServerControl;
 
-@WebServlet(loadOnStartup=1)
-public class InitServlet extends HttpServlet{
-
-	private static final long serialVersionUID = 1L;
+@WebListener
+public class InitServlet implements ServletContextListener{
 
 	@Override
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
+	public void contextInitialized(ServletContextEvent sce) {
 		
 		try {
 			NetworkServerControl server = new NetworkServerControl(InetAddress.getByName("0.0.0.0"),1527);
@@ -49,4 +45,9 @@ public class InitServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        System.out.println("On shutdown web app");
+    }
 }
