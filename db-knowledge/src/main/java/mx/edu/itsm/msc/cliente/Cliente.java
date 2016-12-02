@@ -6,6 +6,7 @@
 package mx.edu.itsm.msc.cliente;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -22,6 +23,7 @@ public class Cliente {
     private Socket client;
     private String ip="localhost";
     private ObjectOutputStream write;
+    private ObjectInputStream reader;
     
     public Cliente(String ip,int puerto) {
         this.ip=ip;
@@ -32,7 +34,8 @@ public class Cliente {
         try {
             client=new Socket();
             client.connect(new InetSocketAddress(InetAddress.getByName(ip).getHostAddress(),port));
-            write=new ObjectOutputStream(client.getOutputStream());            
+            write=new ObjectOutputStream(client.getOutputStream());     
+            reader=new ObjectInputStream(client.getInputStream());
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -40,6 +43,18 @@ public class Cliente {
     public Cliente() {
         init();
     }    
+    public Object get(){
+        try {
+            Object entrada;
+            entrada=reader.readObject();
+            return entrada;
+        } catch (IOException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     public void send(Object o){
         try {
             write.writeObject(o);
@@ -47,5 +62,6 @@ public class Cliente {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     
 }
