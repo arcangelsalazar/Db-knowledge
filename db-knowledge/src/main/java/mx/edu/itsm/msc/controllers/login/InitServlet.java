@@ -1,11 +1,18 @@
 package mx.edu.itsm.msc.controllers.login;
 
-import java.sql.Statement;
+import jade.wrapper.AgentController;
+
+import java.net.InetAddress;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+
+import mx.edu.itsm.msc.jadecontainer.CondVar;
+import mx.edu.itsm.msc.jadecontainer.Container;
+
+import org.apache.derby.drda.NetworkServerControl;
 
 @WebServlet(loadOnStartup=1)
 public class InitServlet extends HttpServlet{
@@ -17,8 +24,20 @@ public class InitServlet extends HttpServlet{
 		super.init(config);
 		
 		try {
-			Statement stm = DataSource.getInstance().getConnection().createStatement();
-			stm.close();
+			NetworkServerControl server = new NetworkServerControl(InetAddress.getByName("0.0.0.0"),1527);
+			server.start(null); 	
+			
+			CondVar startUpLatch = new CondVar();
+			AgentController dwh = Container.getContainer().createNewAgent("AgenteDWH", "mx.edu.itsm.msc.agentedwh.AgenteDWH", new Object[] { startUpLatch });
+			dwh.start();
+
+			try {
+				startUpLatch.waitOn();
+			}
+			catch(InterruptedException ie) {
+				ie.printStackTrace();
+			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
