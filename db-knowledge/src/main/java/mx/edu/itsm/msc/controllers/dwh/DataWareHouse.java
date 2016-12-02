@@ -1,4 +1,4 @@
-package mx.edu.itsm.msc.controllers.login;
+package mx.edu.itsm.msc.controllers.dwh;
 
 import java.util.List;
 
