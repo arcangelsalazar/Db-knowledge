@@ -17,6 +17,7 @@ public class HomeServlet  extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {            
+		System.out.println("Home/Get ==> Inicializa el Carrusel.");
 		request.setAttribute("message", "Productos Ness");
 		request.getRequestDispatcher("HomePage.jsp").forward(request, response);
 	}
