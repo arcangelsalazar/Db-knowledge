@@ -22,8 +22,10 @@ public class Cliente {
     private Socket client;
     private String ip="localhost";
     private ObjectOutputStream write;
-    public Cliente(String ip) {
+    
+    public Cliente(String ip,int puerto) {
         this.ip=ip;
+        this.port=puerto;
         init();
     }
     private void init(){

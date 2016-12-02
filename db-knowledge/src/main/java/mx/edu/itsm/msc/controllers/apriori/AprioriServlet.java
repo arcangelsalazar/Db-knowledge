@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import mx.edu.itsm.msc.cliente.Cliente;
 
 /**
  *
@@ -19,11 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "apriori", urlPatterns = {"/apriori"})
 public class AprioriServlet extends HttpServlet {
-
     private static final long serialVersionUID = -4103143605765885530L;
 	
-	
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,9 +33,10 @@ public class AprioriServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-            int soporte = Integer.valueOf(req.getParameter("soporte"));
-	    int confianza = Integer.valueOf(req.getParameter("confianza"));
+            double soporte = Double.valueOf(req.getParameter("soporte"))/100;
+	    double confianza = Double.valueOf(req.getParameter("confianza"))/100;
             
+            cliente.send(soporte+","+confianza);
             System.out.println("======= A priori ==========");
             System.out.println("soporte: " + soporte);
             System.out.println("confianza: " + confianza);
@@ -84,5 +83,12 @@ public class AprioriServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+Cliente cliente;
+    @Override
+    public void init() throws ServletException {
+        cliente=new Cliente("localhost",2550);
+    }
+// </editor-fold>
 
+    
 }
