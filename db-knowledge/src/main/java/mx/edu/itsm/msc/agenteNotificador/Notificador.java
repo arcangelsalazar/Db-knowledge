@@ -56,6 +56,17 @@ public class Notificador extends Behaviour {
     		// parse query
     	    JIPTermParser parser = jip.getTermParser();
     	    query = parser.parseTerm("transacion(X,150014)");
+    	 // open a synchronous query
+        	JIPQuery jipQuery = jip.openSynchronousQuery(query);
+        	JIPTerm solution;
+
+        	
+        	// Loop while there is another solution
+        	while (jipQuery.hasMoreChoicePoints())
+        	{
+        	    solution = jipQuery.nextSolution();
+        	    System.out.println(solution);
+        	}   
     	}
     	catch(JIPSyntaxErrorException ex)
     	{
@@ -64,17 +75,7 @@ public class Notificador extends Behaviour {
     	    System.exit(0);
     	}
 
-    	// open a synchronous query
-    	JIPQuery jipQuery = jip.openSynchronousQuery(query);
-    	JIPTerm solution;
-
     	
-    	// Loop while there is another solution
-    	while (jipQuery.hasMoreChoicePoints())
-    	{
-    	    solution = jipQuery.nextSolution();
-    	    System.out.println(solution);
-    	}   
          
         
 	}

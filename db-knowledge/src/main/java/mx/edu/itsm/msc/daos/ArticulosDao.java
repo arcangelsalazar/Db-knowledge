@@ -3,6 +3,7 @@ package mx.edu.itsm.msc.daos;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +20,8 @@ public class ArticulosDao {
 	public static List<String> obtenerMasVendidos(){
 		List<String> codigos = new ArrayList<>();
 		try {
-			Statement stm = DataSource.getInstance().getInstance().getConnection().createStatement();
+			Connection con = DataSource.getInstance().getConnection();
+			Statement stm = con.createStatement();
 			stm.execute("select sum(cantidad), codigo from ARTICULOS group by codigo order by  sum(cantidad) desc");
 			ResultSet rs = stm.getResultSet();
 			
@@ -28,6 +30,7 @@ public class ArticulosDao {
 				codigos.add(codigo);
 			}
 			stm.close();
+			con.close();
 		} catch (SQLException | IOException | PropertyVetoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,7 +41,9 @@ public class ArticulosDao {
 	public static String descripcionYPrecio(Integer id){
 		String res = "";
 		try {
-			PreparedStatement stm = DataSource.getInstance().getConnection().prepareStatement("select * from ARTICULOS where codigo =?");
+			Connection con = DataSource.getInstance().getConnection();
+
+			PreparedStatement stm = con.prepareStatement("select * from ARTICULOS where codigo =?");
 			stm.setInt(1, id);
 			ResultSet rs = stm.executeQuery();
 			
@@ -48,6 +53,7 @@ public class ArticulosDao {
 				res = res+","+rs.getString("precio");
 			}
 			stm.close();
+			con.close();
 		} catch (SQLException | IOException | PropertyVetoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,6 +72,10 @@ public class ArticulosDao {
 		}	
 		
 		System.out.println(ArticulosDao.obtenerMasVendidos().toString());
-		System.out.println(ArticulosDao.descripcionYPrecio(1));
+		System.out.println(ArticulosDao.obtenerMasVendidos().toString());
+		System.out.println(ArticulosDao.obtenerMasVendidos().toString());
+		System.out.println(ArticulosDao.descripcionYPrecio(10245));
+		System.out.println(ArticulosDao.descripcionYPrecio(10245));
+		System.out.println(ArticulosDao.descripcionYPrecio(10245));
 	}
 }
