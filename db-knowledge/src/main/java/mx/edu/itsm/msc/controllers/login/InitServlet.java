@@ -37,6 +37,9 @@ public class InitServlet implements ServletContextListener{
 			catch(InterruptedException ie) {
 				ie.printStackTrace();
 			}
+                        
+                        Object myObject = "any";
+			dwh.putO2AObject(myObject, true);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -13,8 +13,8 @@ import org.apache.spark.sql.SparkSession;
 
 public class DataWareHouse {
 	
-	private static String fileOutput = "/var/matriz.csv";
-	//private static String fileOutput = "C:\\TODO\\felix\\AgenteRecomendador\\matriz.csv";
+	//private static String fileOutput = "/var/matriz.csv";
+	private static String fileOutput = "C:\\TODO\\felix\\AgenteRecomendador\\matriz.csv";
 	private static String interFile = "/var/result";
 	
 	public static void main(String[] args) {
