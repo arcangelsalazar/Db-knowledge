@@ -63,7 +63,9 @@ public class ItemsPageServlet  extends HttpServlet{
 
         String articulosRecomendados = notificador.get().toString();
         */
-		String articulosRecomendados = "90082,210017,180753,";
+		//String articulosRecomendados = "90082,210017,180753,";
+		String articulosRecomendados = notificador.get().toString();
+                
         articulosRecomendados = articulosRecomendados.substring(0, articulosRecomendados.length()-1); 
 		String[] articulosArray = articulosRecomendados.split(",");
 		for (int i = 0; i < articulosArray.length; i++) { 
