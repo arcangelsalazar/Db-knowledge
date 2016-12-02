@@ -31,7 +31,9 @@ public class DataWareHouse {
 		Dataset<Row> df = ss.read().option("header", "true").csv("./src/main/resources/movVentas_con_700_Registros.csv");
 		df = df.groupBy(df.col("folio")).pivot("codigo").count().na().fill(0);
 		df.show(150,false);
-		List<Row> list = df.collectAsList();
+		
+                df.coalesce(1).write().csv("./src/main/resources/result.csv");
+                List<Row> list = df.collectAsList();
 		DataWareHouseResult dr = new DataWareHouseResult();
 		
 		dr.setColumns(df.columns());
