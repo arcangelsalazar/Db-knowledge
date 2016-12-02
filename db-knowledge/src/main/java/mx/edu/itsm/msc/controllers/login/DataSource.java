@@ -10,7 +10,7 @@ import org.apache.commons.dbcp.BasicDataSource;
 
 public class DataSource {
 
-	private static String dbURL = "jdbc:derby:c:/var/db-knowledge;create=true;";
+	private static String dbURL = "jdbc:derby://localhost:1527/c:/var/db-knowledge";
 	private static String driver ="org.apache.derby.jdbc.ClientDriver";
 
 	private static DataSource datasource;
