@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import mx.edu.itsm.msc.daos.ArticulosDao;
+
 @WebServlet(name = "micarrito", urlPatterns = {"/micarrito"})
 public class MiCarritoServlet  extends HttpServlet{
 
@@ -17,7 +19,7 @@ public class MiCarritoServlet  extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {            
-		System.out.println("MiCarrito/Get ==> Agrega al Carrito.");
+		System.out.println("MiCarrito/Get ==> Mi Carrito Final.");
 		
 		HttpSession session = request.getSession();
 		
@@ -30,7 +32,8 @@ public class MiCarritoServlet  extends HttpServlet{
 		System.out.println(articulos);
 		System.out.println("===========================");
 		
-		articulos = articulos.substring(0, articulos.length()-1); 
+		if(articulos.length()>0)
+			articulos = articulos.substring(0, articulos.length()-1); 
 		
 		String[] articulosArray = articulos.split(",");
 		
@@ -44,16 +47,35 @@ public class MiCarritoServlet  extends HttpServlet{
 							"</thead>" +
 							"<tbody>";
 		
-		int total = 0;
+		double total = 0;
 		
-		for (int i = 0; i < articulosArray.length; i++) { 
-			System.out.println(articulosArray[i]);
-			total += 100;
+		System.out.println("======= articulosArray ==========");
+		System.out.println(articulos.length());
+		System.out.println(articulosArray.length);
+		System.out.println("=================================");
+		
+		if(articulos.length()>0){
+		
+			for (int i = 0; i < articulosArray.length; i++) { 
+				System.out.println(articulosArray[i]);
+				
+				String articuloListado = ArticulosDao.descripcionYPrecio(Integer.valueOf(articulosArray[i]));
+				String[] articuloRecomendadoArray = articuloListado.split(",");
+						
+				total += Double.valueOf(articuloRecomendadoArray[2]);
+				miTabla += "<tr>";
+				miTabla += "<td>" + (i + 1) + "</td>";
+				miTabla += "<td>" + articuloRecomendadoArray[1] + "</td>";
+				miTabla += "<td class='text-right'>$" + articuloRecomendadoArray[2] + "</td>";
+				miTabla += "</tr>";
+			}
+			request.setAttribute("conArticulos", "conArticulos");
+		}
+		else{
 			miTabla += "<tr>";
-			miTabla += "<td>" + (i + 1) + "</td>";
-			miTabla += "<td>Coca Cola 2 L</td>";
-			miTabla += "<td class='text-right'>$100.00</td>";
+			miTabla += "<td>No hay Articulos que Mostrar.</td>";
 			miTabla += "</tr>";
+			request.setAttribute("sinArticulos", "sinArticulos");
 		}
 		miTabla += "</tbody></table>";
 		System.out.println("===========================");
