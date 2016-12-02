@@ -114,8 +114,8 @@
 
 		<dependency>
 			<groupId>prolog</groupId>
-			<artifactId>prolog</artifactId>
-			<version>0.2.5</version>
+			<artifactId>jiprolog</artifactId>
+			<version>4.1.5.1</version>
 		</dependency>
 	</dependencies>
 	<build>
