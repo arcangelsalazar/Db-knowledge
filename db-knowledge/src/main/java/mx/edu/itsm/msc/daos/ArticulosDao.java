@@ -27,7 +27,7 @@ public class ArticulosDao {
 				String codigo = rs.getString("codigo");
 				codigos.add(codigo);
 			}
-			
+			stm.close();
 		} catch (SQLException | IOException | PropertyVetoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class ArticulosDao {
 				res = res+","+rs.getString("descripcion");
 				res = res+","+rs.getString("precio");
 			}
-			
+			stm.close();
 		} catch (SQLException | IOException | PropertyVetoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
