@@ -9,6 +9,11 @@
 	<url>http://maven.apache.org</url>
 	<repositories>
 		<repository>
+			<id>in-project</id>
+			<name>In Project Repo</name>
+			<url>file://${project.basedir}\libs</url>
+		</repository>
+		<repository>
 			<id>tilab</id>
 			<url>http://jade.tilab.com/maven/</url>
 		</repository>
@@ -93,12 +98,12 @@
 			<version>10.13.1.1</version>
 		</dependency>
 
-                <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
-                <dependency>
-                    <groupId>org.apache.derby</groupId>
-                    <artifactId>derbyclient</artifactId>
-                    <version>10.13.1.1</version>
-                </dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derbyclient</artifactId>
+			<version>10.13.1.1</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
@@ -107,6 +112,11 @@
 			<version>1.4</version>
 		</dependency>
 
+		<dependency>
+			<groupId>prolog</groupId>
+			<artifactId>prolog</artifactId>
+			<version>0.2.5</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>db-knowledge</finalName>

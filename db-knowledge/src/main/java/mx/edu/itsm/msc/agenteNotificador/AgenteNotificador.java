@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mx.edu.itsm.msc.agentenotificador;
+package mx.edu.itsm.msc.agenteNotificador;
 
 import jade.core.Agent;
 
@@ -11,16 +11,18 @@ import jade.core.Agent;
  *
  * @author BIGZENER
  */
-public class AgenteRecomendador extends Agent{
+public class AgenteNotificador extends Agent {
+
     @Override
     protected void setup() {
-        System.out.println("iniciando agente");
-        addBehaviour(new Comportamiento());
+        System.out.println("cargando notificador");
+        addBehaviour(new Notificador());
     }
-    /**
+/**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
     }
+    
 }
