@@ -48,7 +48,7 @@
 	        <nav>
 	        	<ul class="nav nav-pills pull-right">
 	            	<li role="presentation" class="active">
-	            		<a href="${pageContext.request.contextPath}/mi-carrito.jsp">
+	            		<a href="${pageContext.request.contextPath}/micarrito">
 	            			<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
 	            			Mi Carrito
 	            		</a>
