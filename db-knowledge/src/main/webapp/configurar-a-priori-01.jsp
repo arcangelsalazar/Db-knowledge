@@ -5,7 +5,7 @@
 
 <t:genericpage title="Sevilla Dulcería" bodyClass="body2">
 	<jsp:body>
-		<form action=<c:url value="/login"/> method="post">
+		<form action=<c:url value="/apriori"/> method="post">
 			<div class="row col-md-6 col-md-offset-3">
 				<h3>Configuracion de A-priori</h3>
 			</div>
@@ -39,7 +39,11 @@
 			</div>
 			<div class="row col-md-6 col-md-offset-3 text-center">
 				<span class="group-btn">
-					<input type="button" class="btn btn-danger" type="submit" value="Recalcular Algoritmo" />
+					<div class="wrapper">
+                                        <span class="group-btn">     
+                                            <input class="btn btn-primary btn-md" type="submit" value="Recalcular Algoritmo">
+                                        </span>
+                                    </div>
 				</span>
 			</div>
 			<div class="row col-md-6 col-md-offset-3 text-center">
