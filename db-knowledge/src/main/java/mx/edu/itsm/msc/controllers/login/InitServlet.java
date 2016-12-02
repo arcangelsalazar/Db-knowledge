@@ -27,6 +27,9 @@ public class InitServlet implements ServletContextListener{
 			CondVar startUpLatch = new CondVar();
 			AgentController dwh = Container.getContainer().createNewAgent("AgenteDWH", "mx.edu.itsm.msc.agentedwh.AgenteDWH", new Object[] { startUpLatch });
 			dwh.start();
+			
+			AgentController buy = Container.getContainer().createNewAgent("AgenteComprador", "mx.edu.itsm.msc.agenteComprador.AgenteComprador", new Object[] { startUpLatch });
+			buy.start();
 
 			try {
 				startUpLatch.waitOn();
@@ -34,11 +37,6 @@ public class InitServlet implements ServletContextListener{
 			catch(InterruptedException ie) {
 				ie.printStackTrace();
 			}
-			
-			Statement stm = DataSource.getInstance().getConnection().createStatement();
-			stm.execute("Select * from articulos");
-			stm.getResultSet();
-			stm.close();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
