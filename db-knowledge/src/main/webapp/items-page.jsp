@@ -30,7 +30,7 @@
 				        </div>
 				        <div class="col-lg-6 text-center">
 				          	<c:if test="${not empty producto2_id}">	
-				          		<img src="${pageContext.request.contextPath}/resources/images/productos/${producto1_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
+				          		<img src="${pageContext.request.contextPath}/resources/images/productos/${producto2_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
 				          		<p>${producto2}</p>
 				          		<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregarcarrito?articulo=${producto2_id}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
 				          	</c:if>
@@ -39,7 +39,7 @@
 			        <div class="col-md-6">
 						<div class="col-lg-6 text-center">
 				          	<c:if test="${not empty producto3_id}">	
-				          		<img src="${pageContext.request.contextPath}/resources/images/productos/${producto1_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
+				          		<img src="${pageContext.request.contextPath}/resources/images/productos/${producto3_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
 				          		<p>${producto3}</p>
 				          		<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregarcarrito?articulo=${producto3_id}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
 				          	</c:if>
@@ -47,7 +47,7 @@
 				        <div class="col-lg-6 text-center">
 				          	<c:if test="${not empty producto4_id}">	
 				          		<img src="${pageContext.request.contextPath}/resources/images/productos/${producto4_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
-				          		<p>${producto1}</p>
+				          		<p>${producto4}</p>
 				          		<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregarcarrito?articulo=${producto4_id}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
 				          	</c:if>
 				        </div>
@@ -57,14 +57,14 @@
 					<div class="col-md-6">
 						<div class="col-lg-6 text-center">
 				          	<c:if test="${not empty producto5_id}">	
-				          		<img src="${pageContext.request.contextPath}/resources/images/productos/${producto1_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
+				          		<img src="${pageContext.request.contextPath}/resources/images/productos/${producto5_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
 				          		<p>${producto5}</p>
 				          		<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregarcarrito?articulo=${producto5_id}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
 				          	</c:if>
 				        </div>
 				        <div class="col-lg-6 text-center">
 				          	<c:if test="${not empty producto6_id}">	
-				          		<img src="${pageContext.request.contextPath}/resources/images/productos/${producto1_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
+				          		<img src="${pageContext.request.contextPath}/resources/images/productos/${producto6_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
 				          		<p>${producto6}</p>
 				          		<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregarcarrito?articulo=${producto6_id}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
 				          	</c:if>
