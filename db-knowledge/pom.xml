@@ -93,6 +93,13 @@
 			<version>10.13.1.1</version>
 		</dependency>
 
+                <!-- https://mvnrepository.com/artifact/org.apache.derby/derbyclient -->
+                <dependency>
+                    <groupId>org.apache.derby</groupId>
+                    <artifactId>derbyclient</artifactId>
+                    <version>10.13.1.1</version>
+                </dependency>
+
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>

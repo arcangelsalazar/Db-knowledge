@@ -68,10 +68,9 @@
 			    </div>
 			    <ul class="nav navbar-nav">
 					<li><a href="${pageContext.request.contextPath}/items-page.jsp?cat=populares">Populares</a></li>
-					<li><a href="${pageContext.request.contextPath}/items-page.jsp?cat=dulces">Dulces</a></li>
-					<li><a href="${pageContext.request.contextPath}/items-page.jsp?cat=salados">Salados</a></li> 
-					<li><a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">Bebidas</a></li>
-					<li><a href="${pageContext.request.contextPath}/items-page.jsp?cat=repostreria">Reposteria</a></li>  
+					<li><a href="${pageContext.request.contextPath}/items-page.jsp?cat=botanas">Botanas</a></li>
+					<li><a href="${pageContext.request.contextPath}/items-page.jsp?cat=confiteria">Confiteria</a></li> 
+					<li><a href="${pageContext.request.contextPath}/items-page.jsp?cat=varios">Varios</a></li>  
 			    </ul>
 			  	<form class="navbar-form navbar-right">
 					<div class="form-group">

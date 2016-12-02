@@ -19,39 +19,32 @@
 		      	<li data-target="#myCarousel" data-slide-to="1"></li>
 		      	<li data-target="#myCarousel" data-slide-to="2"></li>
 		      	<li data-target="#myCarousel" data-slide-to="3"></li>
-		      	<li data-target="#myCarousel" data-slide-to="4"></li>
 		    </ol>
 		
 		    <!-- Wrapper for slides -->
 		    <div class="carousel-inner" role="listbox">
 		      <div class="item active text-center">
-		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
-		      		<h2>${message}</h2>
-		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
+		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=populares">
+		      		<h2>Productos Populares</h2>
+		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel/populares.jpg" alt="Populares" width="270" height="145"> 
 		      	</a>
 		      </div>
 		      <div class="item text-center">
-		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
-		      		<h2>Nuestras Bebidas</h2>
-		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
+		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=botanas">
+		      		<h2>Botanas</h2>
+		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel/botanas.png" alt="Botanas" width="270" height="145"> 
 		      	</a>
 		      </div>
 		      <div class="item text-center">
-		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
-		      		<h2>Nuestras Bebidas</h2>
-		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
+		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=confiteria">
+		      		<h2>Confiteria</h2>
+		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel/confiteria.jpg" alt="Confiteria" width="270" height="145"> 
 		      	</a>
 		      </div>
 		      <div class="item text-center">
-		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
-		      		<h2>Nuestras Bebidas</h2>
-		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
-		      	</a>
-		      </div>
-		      <div class="item text-center">
-		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=bebidas">
-		      		<h2>Nuestras Bebidas</h2>
-		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel.png" alt="Populares" width="270" height="145"> 
+		      	<a href="${pageContext.request.contextPath}/items-page.jsp?cat=varios">
+		      		<h2>Varios</h2>
+		        	<img src="${pageContext.request.contextPath}/resources/images/carrousel/desechables.jpg" alt="Varios" width="270" height="145"> 
 		      	</a>
 		      </div>
 		    </div>
