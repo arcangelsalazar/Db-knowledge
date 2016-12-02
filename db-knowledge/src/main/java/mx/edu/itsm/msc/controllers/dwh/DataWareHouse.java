@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.SparkSession;
 
 public class DataWareHouse {
@@ -31,8 +32,8 @@ public class DataWareHouse {
 		Dataset<Row> df = ss.read().option("header", "true").csv("./src/main/resources/movVentas_con_700_Registros.csv");
 		df = df.groupBy(df.col("folio")).pivot("codigo").count().na().fill(0);
 		df.show(150,false);
-		
-                df.coalesce(1).write().csv("./src/main/resources/result.csv");
+                
+                df.drop(df.col("folio")).coalesce(1).write().mode(SaveMode.Overwrite).csv("./src/main/resources/result");
                 List<Row> list = df.collectAsList();
 		DataWareHouseResult dr = new DataWareHouseResult();
 		
