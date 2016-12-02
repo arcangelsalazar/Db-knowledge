@@ -2,13 +2,16 @@ package mx.edu.itsm.msc.controllers.carrito;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import mx.edu.itsm.msc.cliente.Cliente;
+import mx.edu.itsm.msc.daos.ArticulosDao;
 
 
 @WebServlet(name = "agregarcarrito", urlPatterns = {"/agregarcarrito"})
@@ -28,6 +31,13 @@ public class ItemsPageServlet  extends HttpServlet{
 		System.out.println(articulo);
 		System.out.println("======================");
 		
+		String articuloActual = ArticulosDao.descripcionYPrecio(Integer.valueOf(articulo));
+		String[] articuloActualArray = articuloActual.split(",");
+		
+		session.setAttribute("producto_id", articuloActualArray[0]);
+		session.setAttribute("producto", articuloActualArray[1]);
+		session.setAttribute("precio", articuloActualArray[2]);
+		
 		if(articulo == null)
 			articulo = "";
 		
@@ -43,16 +53,33 @@ public class ItemsPageServlet  extends HttpServlet{
                     }
 		}
 		session.setAttribute("articulos", articulos);
-		
+		/*
 		System.out.println("=======  Articulos ========");
-                if(articulos.length()>1)articulos=articulos.substring(0, articulos.length()-1);
-                        System.out.println(articulos);
-                notificador.send(articulos);
-                System.out.println("=========Recomendacion=========");
-                System.out.println(notificador.get());
+        if(articulos.length()>1)articulos=articulos.substring(0, articulos.length()-1);
+                System.out.println(articulos);
+        notificador.send(articulos);
+        System.out.println("=========Recomendacion=========");
+        System.out.println(notificador.get());
+
+        String articulosRecomendados = notificador.get().toString();
+        */
+		String articulosRecomendados = "90082,210017,180753,";
+        articulosRecomendados = articulosRecomendados.substring(0, articulosRecomendados.length()-1); 
+		String[] articulosArray = articulosRecomendados.split(",");
+		for (int i = 0; i < articulosArray.length; i++) { 
+			//Este es el ID del Articulo
+			System.out.println(articulosArray[i]);
+			String recomendado = ArticulosDao.descripcionYPrecio(Integer.valueOf(articulosArray[i]));
+			System.out.println(recomendado);
+			String[] articuloRecomendadoArray = recomendado.split(",");
+			
+			session.setAttribute("producto" + (i+1) + "_id", articuloRecomendadoArray[0]);
+			session.setAttribute("producto" + (i+1), articuloRecomendadoArray[1]);
+		}
+        
 		//System.out.println(session.getAttribute("articulos"));
 		System.out.println("===========================");
-		request.getRequestDispatcher("items-page.jsp").forward(request, response);
+		request.getRequestDispatcher("agregar-carrito.jsp").forward(request, response);
 	}
 	
 	@Override

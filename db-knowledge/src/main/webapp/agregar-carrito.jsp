@@ -11,12 +11,11 @@
 		</div>
 		<div class="row col-md-12">
 			<div class="col-md-4">
-				<img src="${pageContext.request.contextPath}/resources/images/coca.png" alt="bebida" width="200" height="200">
+				<img src="${pageContext.request.contextPath}/resources/images/productos/${producto_id}.png" alt="bebida" width="200" height="200">
     		</div>
     		<div class="col-md-8">
-    			<h3>Coca Cola 600 ml.</h3>
-    			<p>No hay mucho que decir, es una Coca Cola y es de 600 ml.</p>
-    			<p>Y es de Pet.</p>
+    			<h3>${producto}</h3>
+    			<p>$ ${precio}</p>
 			</div>
 		</div>
 		<div class="row col-md-12">
@@ -31,26 +30,34 @@
 			  		<div class="row">
 						<div class="col-md-6">
 							<div class="col-lg-6 text-center">
-					          	<img src="${pageContext.request.contextPath}/resources/images/coca.png" alt="La Dulcería de Sevilla" width="150" height="150">
-					          	<p>Coca cola 600 ml</p>
-					          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregar-carrito.jsp?articulo=1" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+					          	<c:if test="${not empty producto1_id}">
+						          	<img src="${pageContext.request.contextPath}/resources/images/productos/${producto1_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
+						          	<p>${producto1}</p>
+						          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregarcarrito?articulo=${producto1_id}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+						        </c:if>
 					        </div>
 					        <div class="col-lg-6 text-center">
-					          	<img src="${pageContext.request.contextPath}/resources/images/coca.png" alt="La Dulcería de Sevilla" width="150" height="150">
-					          	<p>Coca cola 600 ml</p>
-					          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregar-carrito.jsp?articulo=1" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+					          	<c:if test="${not empty producto2_id}">
+						          	<img src="${pageContext.request.contextPath}/resources/images/productos/${producto2_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
+						          	<p>${producto2}</p>
+						          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregarcarrito?articulo=${producto2_id}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+						        </c:if>
 					        </div>
 						</div>
 				        <div class="col-md-6">
 							<div class="col-lg-6 text-center">
-					          	<img src="${pageContext.request.contextPath}/resources/images/coca.png" alt="La Dulcería de Sevilla" width="150" height="150">
-					          	<p>Coca cola 600 ml</p>
-					          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregar-carrito.jsp?articulo=1" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+					          	<c:if test="${not empty producto3_id}">
+						          	<img src="${pageContext.request.contextPath}/resources/images/productos/${producto3_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
+						          	<p>${producto3}</p>
+						          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregarcarrito?articulo=${producto3_id}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+						        </c:if>
 					        </div>
 					        <div class="col-lg-6 text-center">
-					          	<img src="${pageContext.request.contextPath}/resources/images/coca.png" alt="La Dulcería de Sevilla" width="150" height="150">
-					          	<p>Coca cola 600 ml</p>
-					          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregar-carrito.jsp?articulo=1" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+					          	<c:if test="${not empty producto4_id}">
+						          	<img src="${pageContext.request.contextPath}/resources/images/productos/${producto4_id}.png" alt="La Dulcería de Sevilla" width="150" height="150">
+						          	<p>${producto4}</p>
+						          	<p><a class="btn btn-primary" href="${pageContext.request.contextPath}/agregarcarrito?articulo=${producto4_id}" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></p>
+						        </c:if>
 					        </div>
 						</div>
 					</div>
