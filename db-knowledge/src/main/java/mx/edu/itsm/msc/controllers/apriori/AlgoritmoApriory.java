@@ -1,8 +1,5 @@
 package mx.edu.itsm.msc.controllers.apriori;
 
-
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 public class AlgoritmoApriory {
 
@@ -19,9 +15,12 @@ public class AlgoritmoApriory {
     public static ArrayList<ReglaAsociacion> generaReglasDeAsociacion(int matriz[][], double minsup, double minconf) {
 
         ArrayList<String> itemsets = calculaItemsets(matriz, minsup);
-
-        ArrayList<ReglaAsociacion> reglas = calculaAsociaciones(itemsets, minconf);
-
+        ArrayList<ReglaAsociacion> reglas = null;
+        //Aqui hay que ver q onda con los itemsets
+        
+        if (!itemsets.get(0).isEmpty()) {
+            reglas = calculaAsociaciones(itemsets, minconf);
+        }
         return reglas;
     }
 
@@ -38,22 +37,24 @@ public class AlgoritmoApriory {
 
         estructuraInicial.add(estructura);
         //Busco los elementos para las combinaciones
-        int[] bases = obtenerBasesDadaPrimerEstructura(estructura);
-        //Bases si tiene hasta el 3
-        if (bases.length > 0) {
-            int numeroCombinaciones = 2;
-            ArrayList<List<String>> combinaciones = combina(bases, numeroCombinaciones);
-            while (!combinaciones.isEmpty()) {
-                //Analiza las combinaciones
-                for (List combi : combinaciones) {
-                    double x = esMayorAlSoporte(combi, matriz, minsup);
+        if (!estructura.isEmpty()) {
+            int[] bases = obtenerBasesDadaPrimerEstructura(estructura);
+            //Bases si tiene hasta el 3
+            if (bases.length > 0) {
+                int numeroCombinaciones = 2;
+                ArrayList<List<String>> combinaciones = combina(bases, numeroCombinaciones);
+                while (!combinaciones.isEmpty()) {
+                    //Analiza las combinaciones
+                    for (List combi : combinaciones) {
+                        double x = esMayorAlSoporte(combi, matriz, minsup);
 
-                    if (x > 0) {
-                        estructuraInicial.add(creaEstructura(combi, x));
+                        if (x > 0) {
+                            estructuraInicial.add(creaEstructura(combi, x));
+                        }
                     }
+                    numeroCombinaciones++;
+                    combinaciones = combina(bases, numeroCombinaciones);
                 }
-                numeroCombinaciones++;
-                combinaciones = combina(bases, numeroCombinaciones);
             }
         }
         return estructuraInicial;
@@ -140,7 +141,7 @@ public class AlgoritmoApriory {
                         der.removeAll(izq);
 
                         //imprimeSemiReglas(izq, der,regla);
-                        ReglaAsociacion rul=new ReglaAsociacion();
+                        ReglaAsociacion rul = new ReglaAsociacion();
                         rul.setDerecha(der);
                         rul.setIzquierda(izq);
                         rul.setConfianza(miConfianza);
@@ -298,7 +299,7 @@ public class AlgoritmoApriory {
         return conjunto;
     }
 
-    private static void imprimeSemiReglas(Set<Integer> izq, Set<Integer> der,String regla) {
+    private static void imprimeSemiReglas(Set<Integer> izq, Set<Integer> der, String regla) {
 
         //ReglaProbar va a izquierda
         //Padre - regla a Probar va a derecha

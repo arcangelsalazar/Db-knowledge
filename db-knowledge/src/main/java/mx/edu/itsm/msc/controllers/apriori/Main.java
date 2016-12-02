@@ -19,16 +19,16 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        double minSup = .10;
-        double minCon = .01;
+        double minSup = .60;
+        double minCon = .70;
 
-        ArrayList<String> lectura = leerCsv("./src/main/resources/result.csv/part-r-00000-38d761f7-f7ad-47f3-afea-9fa18bb201c4.csv");
+        ArrayList<String> lectura = leerCsv("./src/main/resources/result/part-r-00000-c5827cc1-6fee-49b0-9bdc-eae3c5e4f6bc.csv");
         String dum[] = lectura.get(0).split(",");
         int m[][] = new int[lectura.size()][dum.length];
-
+        //For
         for (int i = 1; i < lectura.size(); i++) {
             String renglon[] = lectura.get(i).split(",");
-            for (int j = 1; j < m[i].length; j++) {
+            for (int j = 0; j < m[i].length; j++) {
                 m[i][j] = Integer.parseInt(renglon[j]);
             }
         }
