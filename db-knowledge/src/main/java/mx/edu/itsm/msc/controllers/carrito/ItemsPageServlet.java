@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.derby.tools.sysinfo;
 
-@WebServlet("/agregarcarrito")
+@WebServlet(name = "agregarcarrito", urlPatterns = {"/agregarcarrito"})
 public class ItemsPageServlet  extends HttpServlet{
 
 	private static final long serialVersionUID = -4103143605765885530L;

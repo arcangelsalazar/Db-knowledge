@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/itemspage")
+@WebServlet(name = "itemspage", urlPatterns = {"/itemspage"})
 public class ItemsPageServlet  extends HttpServlet{
 
 	private static final long serialVersionUID = -4103143605765885530L;
