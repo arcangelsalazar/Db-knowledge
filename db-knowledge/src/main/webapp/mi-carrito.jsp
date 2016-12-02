@@ -8,40 +8,7 @@
 		<div class="row col-md-10 col-md-offset-1">
 			<h3>Carrito de Compras</h3>
 			<div class="table-responsive">
-				<table class="table">
-					<thead>
-						<tr>
-					        <th>#</th>
-					        <th>Producto</th>
-					        <th>Cantidad</th>
-					        <th>Precio</th>
-					        <th>Sub-Total</th>
-					      </tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Coca Cola 600 ml</td>
-							<td>2</td>
-							<td class="text-right">$ 9.00</td>
-							<td class="text-right">$18.00</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Coca Cola 1 L</td>
-							<td>6</td>
-							<td class="text-right">$ 15.00</td>
-							<td class="text-right">$90.00</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Coca Cola 2 L</td>
-							<td>4</td>
-							<td class="text-right">$ 25.00</td>
-							<td class="text-right">$100.00</td>
-						</tr>
-					</tbody>
-				</table>
+				${miTabla}
 			</div>
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
@@ -49,7 +16,7 @@
 				<h4><strong>Total:</strong></h4>
 			</div>
 			<div class="col-md-2 text-right">
-				<h4 class="text-right"><strong>$ 208.00</strong></h4>
+				<h4 class="text-right"><strong>${total}</strong></h4>
 			</div>
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
@@ -57,7 +24,7 @@
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
 			<div class="col-md-4 col-md-offset-1 text-center">
-				<a class="btn btn-danger btn-primary" href="${pageContext.request.contextPath}/index.jsp" role="button">
+				<a class="btn btn-danger btn-primary" href="${pageContext.request.contextPath}/micarritostatus?status=cancelar" role="button">
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					&nbsp;&nbsp;&nbsp;
 					Vaciar Carrito
@@ -65,7 +32,7 @@
 				</a>
 			</div>
 			<div class="col-md-4 col-md-offset-1 text-center">
-				<a class="btn btn-primary" href="${pageContext.request.contextPath}/index.jsp" role="button">
+				<a class="btn btn-primary" href="${pageContext.request.contextPath}/micarritostatus?status=comprar" role="button">
 					<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
 					&nbsp;
 					Finalizar Compra
