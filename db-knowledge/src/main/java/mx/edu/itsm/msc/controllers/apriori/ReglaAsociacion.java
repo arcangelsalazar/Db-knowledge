@@ -1,8 +1,5 @@
 package mx.edu.itsm.msc.controllers.apriori;
 
-
-
-
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -20,6 +17,8 @@ public class ReglaAsociacion {
     private ArrayList<Integer> izquierda;
     private ArrayList<Integer> derecha;
     private double confianza;
+    private String iz;
+    private String de;
 
     public ReglaAsociacion() {
         izquierda = new ArrayList<>();
@@ -49,10 +48,12 @@ public class ReglaAsociacion {
 
     public void putI(int valor) {
         izquierda.add(valor);
+        calculaIz();
     }
 
     public void putD(int valor) {
         derecha.add(valor);
+        calculaDe();
     }
 
     public ArrayList<Integer> getIzquierda() {
@@ -63,18 +64,36 @@ public class ReglaAsociacion {
         return derecha;
     }
 
-    @Override
-    public String toString() {
+    private void calculaIz() {
         String salida = "{";
         for (Integer integer : izquierda) {
             salida = salida + integer + ",";
         }
-        salida = salida.substring(0, salida.length()-1) + "}->{";
+        salida = salida.substring(0, salida.length() - 1) + "}";
+        iz = salida;
+    }
+
+    private void calculaDe() {
+        String salida = "{";
         for (Integer integer : derecha) {
             salida = salida + integer + ",";
         }
         salida = salida.substring(0, salida.length() - 1) + "}";
+        de = salida;
+    }
+
+    @Override
+    public String toString() {
+        String salida = iz + "->" + de;
         return salida;
+    }
+
+    public String getIz() {
+        return iz;
+    }
+
+    public String getDe() {
+        return de;
     }
 
 }
