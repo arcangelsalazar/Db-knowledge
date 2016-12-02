@@ -11,17 +11,33 @@ import java.util.TreeMap;
 
 public class AlgoritmoApriory {
 
+    public static ArrayList<ReglaAsociacion> generaFinalesReglas(ArrayList<ReglaAsociacion> reglas) {
+        ArrayList<ReglaAsociacion> salida = new ArrayList<>();
+        for (int i = 0; i < reglas.size(); i++) {
+            salida.add(reglas.get(i));
+            for (int j = i + 1; j < reglas.size(); j++) {
+                if (reglas.get(i).getIz().equalsIgnoreCase(reglas.get(j).getIz())
+                        && reglas.get(i).getConfianza() == reglas.get(j).getConfianza()) {
+                    for (int k = 0; k < reglas.get(j).getIzquierda().size(); k++) {
+                        salida.get(i).putD(reglas.get(j).getDerecha().get(k));
+                    }
+                }
+            }
+        }
+        return salida;
+    }
+
     //Listo, no mover, es la estructura padre
     public static ArrayList<ReglaAsociacion> generaReglasDeAsociacion(int matriz[][], double minsup, double minconf) {
 
         ArrayList<String> itemsets = calculaItemsets(matriz, minsup);
         ArrayList<ReglaAsociacion> reglas = null;
-        //Aqui hay que ver q onda con los itemsets
-        
+
         if (!itemsets.get(0).isEmpty()) {
             reglas = calculaAsociaciones(itemsets, minconf);
         }
-        return reglas;
+        return generaFinalesReglas(reglas);
+        //return reglas;
     }
 
     //Funcional
@@ -315,4 +331,31 @@ public class AlgoritmoApriory {
         }
         System.out.println("");
     }
+
+    public static ArrayList<ReglaAsociacion> convierteReglasAID(ArrayList<ReglaAsociacion> reglas, int[] ides) {
+
+        TreeMap<Integer, Integer> mapa = new TreeMap<Integer, Integer>();
+        for (int i = 1; i <= ides.length; i++) {
+            mapa.put(i, ides[i - 1]);
+        }
+        ArrayList<ReglaAsociacion> salida = new ArrayList<>();
+        for (ReglaAsociacion regla : reglas) {
+            ReglaAsociacion nuevaRegla = new ReglaAsociacion();
+            for (int i = 0; i < regla.getIzquierda().size(); i++) {
+                int vieja = regla.getIzquierda().get(i);
+                int nueva = mapa.get(vieja);
+                nuevaRegla.putI(nueva);
+            }
+
+            for (int i = 0; i < regla.getDerecha().size(); i++) {
+                int vieja = regla.getDerecha().get(i);
+                int nueva = mapa.get(vieja);
+                nuevaRegla.putD(nueva);
+            }
+            nuevaRegla.setConfianza(regla.getConfianza());
+            salida.add(nuevaRegla);
+        }
+        return salida;
+    }
+
 }
