@@ -3,6 +3,7 @@ package mx.edu.itsm.msc.controllers.login;
 import jade.wrapper.AgentController;
 
 import java.net.InetAddress;
+import java.sql.Statement;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -37,6 +38,11 @@ public class InitServlet extends HttpServlet{
 			catch(InterruptedException ie) {
 				ie.printStackTrace();
 			}
+			
+			Statement stm = DataSource.getInstance().getConnection().createStatement();
+			stm.execute("Select * from articulos");
+			stm.getResultSet();
+			stm.close();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
