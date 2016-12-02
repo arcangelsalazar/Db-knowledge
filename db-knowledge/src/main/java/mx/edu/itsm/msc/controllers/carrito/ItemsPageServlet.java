@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import mx.edu.itsm.msc.cliente.Cliente;
 
 import org.apache.derby.tools.sysinfo;
 
 @WebServlet(name = "agregarcarrito", urlPatterns = {"/agregarcarrito"})
 public class ItemsPageServlet  extends HttpServlet{
 
+    Cliente notificador;
 	private static final long serialVersionUID = -4103143605765885530L;
 	
 	@Override
@@ -36,15 +38,18 @@ public class ItemsPageServlet  extends HttpServlet{
 		String articulos = "";
 		
 		if(session.getAttribute("articulos")==null)
-			articulos = articulo + ",";
+			if(!articulos.contains(articulo))
+                            articulos = articulo + ",";
 		else{
-			articulos = session.getAttribute("articulos") + articulo + ",";
+                    if(!articulos.contains(articulo))
+                        articulos = session.getAttribute("articulos") + articulo + ",";
 		}
 		session.setAttribute("articulos", articulos);
 		
 		System.out.println("=======  Articulos ========");
-		System.out.println(articulos);
-		System.out.println(session.getAttribute("articulos"));
+		System.out.println(articulos.substring(0, articulos.length()-1));
+                notificador.send(articulos.substring(0, articulos.length()-1));
+		//System.out.println(session.getAttribute("articulos"));
 		System.out.println("===========================");
 		request.getRequestDispatcher("items-page.jsp").forward(request, response);
 	}
@@ -61,4 +66,11 @@ public class ItemsPageServlet  extends HttpServlet{
         req.setAttribute("result", "This is the result of the servlet call");
         req.getRequestDispatcher("agregar-carrito.jsp").forward(req, resp);
 	}
+
+    @Override
+    public void init() throws ServletException {
+        notificador=new Cliente("localhost",2551);        
+    }
+        
+        
 }
