@@ -29,11 +29,11 @@ public class DataWareHouse {
                      .master("local[*]")
 	     .getOrCreate();
 
-		Dataset<Row> df = ss.read().option("header", "true").csv("./src/main/resources/movVentas_con_700_Registros.csv");
+		Dataset<Row> df = ss.read().option("header", "true").csv("./src/main/resources/movAlmacenes.csv");
 		df = df.groupBy(df.col("folio")).pivot("codigo").count().na().fill(0);
 		df.show(150,false);
                 
-                df.drop(df.col("folio")).coalesce(1).write().mode(SaveMode.Overwrite).csv("./src/main/resources/result");
+                df.drop(df.col("folio")).coalesce(1).write().option("header", "true").mode(SaveMode.Overwrite).csv("./src/main/resources/result");
                 List<Row> list = df.collectAsList();
 		DataWareHouseResult dr = new DataWareHouseResult();
 		
