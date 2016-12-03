@@ -55,7 +55,7 @@ public class Notificador extends Behaviour {
     	    jip.loadFile("reglas.jip");
     		// parse query
     	    JIPTermParser parser = jip.getTermParser();
-    	    query = parser.parseTerm("transacion(X,150014)");
+    	    query = parser.parseTerm("listing/0");
     	 // open a synchronous query
         	JIPQuery jipQuery = jip.openSynchronousQuery(query);
         	JIPTerm solution;
@@ -73,10 +73,6 @@ public class Notificador extends Behaviour {
     	    // there is a syntax error in the query
     	    ex.printStackTrace();
     	    System.exit(0);
-    	}
-
-    	
-         
-        
+    	}        
 	}
 }

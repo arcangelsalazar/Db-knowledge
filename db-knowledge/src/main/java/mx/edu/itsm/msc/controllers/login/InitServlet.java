@@ -17,6 +17,9 @@ import org.apache.derby.drda.NetworkServerControl;
 @WebListener
 public class InitServlet implements ServletContextListener{
 
+	private AgentController dwh;
+	private AgentController buy;
+	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		
@@ -25,10 +28,10 @@ public class InitServlet implements ServletContextListener{
 			server.start(null); 	
 			
 			CondVar startUpLatch = new CondVar();
-			AgentController dwh = Container.getContainer().createNewAgent("AgenteDWH", "mx.edu.itsm.msc.agentedwh.AgenteDWH", new Object[] { startUpLatch });
+			dwh = Container.getContainer().createNewAgent("AgenteDWH", "mx.edu.itsm.msc.agentedwh.AgenteDWH", new Object[] { startUpLatch });
 			dwh.start();
 			
-			AgentController buy = Container.getContainer().createNewAgent("AgenteComprador", "mx.edu.itsm.msc.agenteComprador.AgenteComprador", new Object[] { startUpLatch });
+			buy = Container.getContainer().createNewAgent("AgenteComprador", "mx.edu.itsm.msc.agenteComprador.AgenteComprador", new Object[] { startUpLatch });
 			buy.start();
 
 			try {
@@ -51,4 +54,12 @@ public class InitServlet implements ServletContextListener{
     public void contextDestroyed(ServletContextEvent sce) {
         System.out.println("On shutdown web app");
     }
+
+	public AgentController getDwh() {
+		return dwh;
+	}
+
+	public AgentController getBuy() {
+		return buy;
+	}
 }
