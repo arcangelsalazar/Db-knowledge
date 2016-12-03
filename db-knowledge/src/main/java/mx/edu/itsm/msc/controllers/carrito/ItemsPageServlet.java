@@ -43,17 +43,18 @@ public class ItemsPageServlet  extends HttpServlet{
 		
 		String articulos = "";
 		
+		
 		if(session.getAttribute("articulos")==null){
-		            articulos = articulo + ",";
-                }
+			articulos = articulo + ",";
+		}
 		else{
-                    articulos = session.getAttribute("articulos").toString();
-                    if(!articulos.contains(articulo)){
-                        articulos = articulos+ articulo + ",";
-                    }
+            articulos = session.getAttribute("articulos").toString();
+            if(!articulos.contains(articulo)){
+                articulos = articulos+ articulo + ",";
+            }
 		}
 		session.setAttribute("articulos", articulos);
-		/*
+		/*TODO: De aqui
 		System.out.println("=======  Articulos ========");
         if(articulos.length()>1)articulos=articulos.substring(0, articulos.length()-1);
                 System.out.println(articulos);
@@ -61,24 +62,26 @@ public class ItemsPageServlet  extends HttpServlet{
         System.out.println("=========Recomendacion=========");
         System.out.println(notificador.get());
 
-        String articulosRecomendados = notificador.get().toString();
-        */
-		String articulosRecomendados = "90082,210017,180753,";
-		//String articulosRecomendados = notificador.get().toString();
-                
-        articulosRecomendados = articulosRecomendados.substring(0, articulosRecomendados.length()-1); 
-		String[] articulosArray = articulosRecomendados.split(",");
-		for (int i = 0; i < articulosArray.length; i++) { 
-			//Este es el ID del Articulo
-			System.out.println(articulosArray[i]);
-			String recomendado = ArticulosDao.descripcionYPrecio(Integer.valueOf(articulosArray[i]));
-			System.out.println(recomendado);
-			String[] articuloRecomendadoArray = recomendado.split(",");
-			
-			session.setAttribute("producto" + (i+1) + "_id", articuloRecomendadoArray[0]);
-			session.setAttribute("producto" + (i+1), articuloRecomendadoArray[1]);
-		}
-        
+        if(notificador.get().toString()!=null){        
+	        String articulosRecomendados = notificador.get().toString();
+	        */ 
+			//TODO: hasta aqui
+			String articulosRecomendados = "90082,210017,180753,";
+			//String articulosRecomendados = notificador.get().toString();
+	                
+	        articulosRecomendados = articulosRecomendados.substring(0, articulosRecomendados.length()-1); 
+			String[] articulosArray = articulosRecomendados.split(",");
+			for (int i = 0; i < articulosArray.length; i++) { 
+				//Este es el ID del Articulo
+				System.out.println(articulosArray[i]);
+				String recomendado = ArticulosDao.descripcionYPrecio(Integer.valueOf(articulosArray[i]));
+				System.out.println(recomendado);
+				String[] articuloRecomendadoArray = recomendado.split(",");
+				
+				session.setAttribute("producto" + (i+1) + "_id", articuloRecomendadoArray[0]);
+				session.setAttribute("producto" + (i+1), articuloRecomendadoArray[1]);
+			}
+        //} //TODO:Este se quita cuando funcione el recomendador.    
 		//System.out.println(session.getAttribute("articulos"));
 		System.out.println("===========================");
 		request.getRequestDispatcher("agregar-carrito.jsp").forward(request, response);
@@ -99,7 +102,7 @@ public class ItemsPageServlet  extends HttpServlet{
 
     @Override
     public void init() throws ServletException {
-        notificador=new Cliente("localhost",2551);        
+        notificador=new Cliente("192.168.1.2",2551);        
     }
         
         

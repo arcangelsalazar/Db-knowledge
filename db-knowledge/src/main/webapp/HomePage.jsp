@@ -8,7 +8,7 @@
 		<c:if test="${not empty infor}">
 			<div id="success-alert" class="alert alert-success fade in">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Dulceria Sevilla:</strong> Venta concluida exitosamente.
+				<strong>Dulceria Sevilla:</strong> ${infor}
 			</div>
 		</c:if>
 		<style>

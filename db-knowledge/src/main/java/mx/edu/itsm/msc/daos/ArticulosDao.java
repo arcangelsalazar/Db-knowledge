@@ -62,6 +62,30 @@ public class ArticulosDao {
 		return res;
 	}
 	
+	public static String ontenerArticulo(Integer id){
+		String res = "";
+		try {
+			Connection con = DataSource.getInstance().getConnection();
+
+			PreparedStatement stm = con.prepareStatement("select * from ARTICULOS where codigo =?");
+			stm.setInt(1, id);
+			ResultSet rs = stm.executeQuery();
+			
+			while (rs.next()) {
+				res = id.toString();
+				res = res+","+rs.getString("descripcion");
+				res = res+","+rs.getString("precio");
+			}
+			stm.close();
+			con.close();
+		} catch (SQLException | IOException | PropertyVetoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	
 	public static void main(String[] args) {
 		try {
 			NetworkServerControl server = new NetworkServerControl(InetAddress.getByName("0.0.0.0"),1527);

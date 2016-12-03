@@ -41,6 +41,7 @@ public class AprioriServlet extends HttpServlet {
             System.out.println("soporte: " + soporte);
             System.out.println("confianza: " + confianza);
             System.out.println("===========================");
+            req.setAttribute("infor", "Recalculo de A-Priori correcto.");
             req.getRequestDispatcher("HomePage.jsp").forward(req, resp);
         
     }
@@ -86,7 +87,7 @@ public class AprioriServlet extends HttpServlet {
 Cliente cliente;
     @Override
     public void init() throws ServletException {
-        cliente=new Cliente("localhost",2550);
+        cliente=new Cliente("192.168.1.2",2550);
     }
 // </editor-fold>
 

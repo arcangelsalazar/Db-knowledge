@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import mx.edu.itsm.msc.agenteComprador.AgenteComprador;
+
 @WebServlet(name = "micarritostatus", urlPatterns = {"/micarritostatus"})
 public class MiCarritoStatusServlet  extends HttpServlet{
 
@@ -45,8 +47,14 @@ public class MiCarritoStatusServlet  extends HttpServlet{
 			for (int i = 0; i < articulosArray.length; i++) { 
 				//Este es el ID del Articulo
 				System.out.println(articulosArray[i]);
+				AgenteComprador agenteComprador = new AgenteComprador();
+				try {
+					agenteComprador.putO2AObject(articulosArray[i], true);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-			session.setAttribute("infor", "infor");
+			request.setAttribute("infor", "Venta concluida exitosamente.");
 			articulos = "";
 			session.setAttribute("articulos", articulos);
 			break;
