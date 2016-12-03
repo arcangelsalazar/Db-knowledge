@@ -16,7 +16,7 @@
 				<h4><strong>Total:</strong></h4>
 			</div>
 			<div class="col-md-2 text-right">
-				<h4 class="text-right"><strong>${total}</strong></h4>
+				<h4 class="text-right"><strong>$ ${total}</strong></h4>
 			</div>
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
