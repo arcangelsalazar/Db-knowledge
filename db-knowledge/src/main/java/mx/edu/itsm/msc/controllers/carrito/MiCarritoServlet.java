@@ -25,8 +25,8 @@ public class MiCarritoServlet  extends HttpServlet{
 		
 		String articulos = "";
 		
-		if(session.getAttribute("articulos")!=null)
-			articulos = session.getAttribute("articulos").toString();
+		if(session.getAttribute("articulosLista")!=null)
+			articulos = session.getAttribute("articulosLista").toString();
 		
 		System.out.println("=======  Mi Carrito ========");
 		System.out.println(articulos);

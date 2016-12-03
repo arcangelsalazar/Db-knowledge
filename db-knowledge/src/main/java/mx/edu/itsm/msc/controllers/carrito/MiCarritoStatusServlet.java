@@ -30,8 +30,8 @@ public class MiCarritoStatusServlet  extends HttpServlet{
 		
 		String articulos = "";
 				
-		if(session.getAttribute("articulos")!=null)
-			articulos = session.getAttribute("articulos").toString();
+		if(session.getAttribute("articulosLista")!=null)
+			articulos = session.getAttribute("articulosLista").toString();
 		
 		System.out.println("=======  Mi Carrito ========");
 		System.out.println(status);
@@ -57,11 +57,13 @@ public class MiCarritoStatusServlet  extends HttpServlet{
 			request.setAttribute("infor", "Venta concluida exitosamente.");
 			articulos = "";
 			session.setAttribute("articulos", articulos);
+			session.setAttribute("articulosLista", articulos);
 			break;
 		case "cancelar":
 		default:
 			articulos = "";
 			session.setAttribute("articulos", articulos);
+			session.setAttribute("articulosLista", articulos);
 			break;
 		}
 		

@@ -28,8 +28,11 @@ public class ItemsPageServlet  extends HttpServlet{
 		String articulo = request.getParameter("articulo");
 		
 		System.out.println("===== Articulo ======");
-		System.out.println(articulo);
-		System.out.println("======================");
+		System.out.println("Actual:" + articulo);
+		System.out.println("========== Guardado en Session ============");
+		System.out.println(session.getAttribute("articulos"));
+		System.out.println(session.getAttribute("articulosLista"));
+		System.out.println("===========================================");
 		
 		String articuloActual = ArticulosDao.descripcionYPrecio(Integer.valueOf(articulo));
 		String[] articuloActualArray = articuloActual.split(",");
@@ -42,7 +45,7 @@ public class ItemsPageServlet  extends HttpServlet{
 			articulo = "";
 		
 		String articulos = "";
-		
+		String articulosLista = "";
 		
 		if(session.getAttribute("articulos")==null){
 			articulos = articulo + ",";
@@ -53,7 +56,17 @@ public class ItemsPageServlet  extends HttpServlet{
                 articulos = articulos+ articulo + ",";
             }
 		}
+		
+		if(session.getAttribute("articulosLista")==null){
+			articulosLista = articulo + ",";
+		}
+		else{
+			articulosLista = session.getAttribute("articulosLista").toString();
+			articulosLista = articulosLista + articulo + ",";
+		}
+		
 		session.setAttribute("articulos", articulos);
+		session.setAttribute("articulosLista", articulosLista);
 		/*TODO: De aqui
 		System.out.println("=======  Articulos ========");
         if(articulos.length()>1)articulos=articulos.substring(0, articulos.length()-1);
