@@ -11,11 +11,11 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.wrapper.AgentController;
-import jade.wrapper.StaleProxyException;
 
-import java.math.BigDecimal;
 import java.net.InetAddress;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import mx.edu.itsm.msc.controllers.login.DataSource;
 import mx.edu.itsm.msc.jadecontainer.CondVar;
@@ -78,22 +78,43 @@ public class AgenteComprador extends Agent{
 			}
 		});
 	}
+	
+	
 
 	public void insertarEnDB(String params){
-		String[] datos = params.split(",");
+		String codigo = params;
 		try {
+			Statement stm1 = DataSource.getInstance().getConnection().createStatement();
+			
+			ResultSet rs = stm1.executeQuery("SELECT max(folio) as folio from articulos");
+			
+			rs.next();
+			int folio = rs.getInt("folio");
+			folio++;			
+			
 			PreparedStatement stm = DataSource.getInstance().getConnection().prepareStatement(
-					"INSERT INTO articulos(folio, codigo, descripcion, marca, cantidad, precio, categoria ) "
-					+ "VALUES(?,?,?,?,?,?,?)");
-			stm.setInt(1, Integer.valueOf(datos[0]));
-			stm.setString(2, datos[1]);
-			stm.setString(3, datos[2]);
-			stm.setString(4, datos[3]);
-			stm.setInt(5, Integer.valueOf(datos[4]));
-			stm.setBigDecimal(6, new BigDecimal(datos[5]));
-			stm.setString(7, datos[6]);
-			stm.executeUpdate();
-			stm.close();
+					"SELECT * from articulos where codigo=?");
+			stm.setString(1, codigo);
+			System.out.println(codigo);
+			rs = stm.executeQuery();
+			
+			if (rs.next()) {
+				stm = DataSource.getInstance().getConnection().prepareStatement(
+						"INSERT INTO articulos(folio, codigo, descripcion, marca, cantidad, precio, categoria ) "
+						+ "VALUES(?,?,?,?,?,?,?)");
+				stm.setInt(1, folio);
+				stm.setString(2, rs.getString("codigo"));
+				stm.setString(3, rs.getString("descripcion"));
+				stm.setString(4, rs.getString("marca"));
+				stm.setInt(5, rs.getInt("cantidad"));
+				stm.setBigDecimal(6, rs.getBigDecimal("precio"));
+				stm.setString(7, rs.getString("categoria"));
+				stm.executeUpdate();
+				stm.close();
+				
+			}
+			
+			
 			
 			System.out.println("Agregado exitosamente");
 		} catch (Exception e) {
@@ -123,7 +144,7 @@ public class AgenteComprador extends Agent{
 			catch(InterruptedException ie) {
 				ie.printStackTrace();
 			}
-			Object myObject = "49,150014,SABRISURTIDO 1/30PZ ALEGRO,ALEGRO,10,702.82,BOTANAS";
+			Object myObject = "150014";
 			rma.putO2AObject(myObject, true);
 		} catch (Exception e) {
 			e.printStackTrace();

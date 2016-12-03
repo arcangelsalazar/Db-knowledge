@@ -1,7 +1,7 @@
-Fri Dec 02 17:58:47 CST 2016 : Servidor de red Apache Derby: Se ha iniciado 10.13.1.1 - (1765088) y está listo para aceptar las conexiones en el puerto 1527
+Fri Dec 02 18:57:06 CST 2016 : Servidor de red Apache Derby: Se ha iniciado 10.13.1.1 - (1765088) y está listo para aceptar las conexiones en el puerto 1527
 ----------------------------------------------------------------
-Fri Dec 02 17:58:48 CST 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0158-c1f9-de3b-00000d1a3aa0 
+Fri Dec 02 18:57:12 CST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0158-c22f-41e7-00000d1895c0 
 on database directory C:\var\db-knowledge with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
 Loaded from file:/C:/Users/Arcangel/.m2/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
 java.vendor=Oracle Corporation
