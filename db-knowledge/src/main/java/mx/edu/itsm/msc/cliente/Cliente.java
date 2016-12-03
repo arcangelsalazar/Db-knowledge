@@ -5,9 +5,11 @@
  */
 package mx.edu.itsm.msc.cliente;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -22,8 +24,8 @@ public class Cliente {
     private int port=2550;
     private Socket client;
     private String ip="localhost";
-    private ObjectOutputStream write;
-    private ObjectInputStream reader;
+    public BufferedWriter write;
+    private BufferedReader reader;
     
     public Cliente(String ip,int puerto) {
         this.ip=ip;
@@ -34,8 +36,8 @@ public class Cliente {
         try {
             client=new Socket();
             client.connect(new InetSocketAddress(InetAddress.getByName(ip).getHostAddress(),port));
-            write=new ObjectOutputStream(client.getOutputStream());     
-            reader=new ObjectInputStream(client.getInputStream());
+            write=new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+            reader=new BufferedReader(new InputStreamReader(client.getInputStream()));
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -43,26 +45,23 @@ public class Cliente {
     public Cliente() {
         init();
     }    
-    public Object get(){
+    public String get(){       
+        if(reader!=null)
         try {
-            Object entrada;
-            entrada=reader.readObject();
-            return entrada;
+            
+            return reader.readLine();
         } catch (IOException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        } catch (ClassNotFoundException ex) {            
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }        
+            //Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return "";
     }
-    public void send(Object o){
+    public void send(String s){
         try {
-            write.writeObject(o);
+            write.write(s+"\n");
+            write.flush();
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
 }

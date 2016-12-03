@@ -79,8 +79,9 @@ public class ItemsPageServlet  extends HttpServlet{
 	        String articulosRecomendados = notificador.get().toString();
 	        */ 
 			//TODO: hasta aqui
-			String articulosRecomendados = "90082,210017,180753,";
-			//String articulosRecomendados = notificador.get().toString();
+			//String articulosRecomendados = "90082,210017,180753,";
+                        notificador.send(articulos);
+			String articulosRecomendados = notificador.get().toString();
 	                
 	        articulosRecomendados = articulosRecomendados.substring(0, articulosRecomendados.length()-1); 
 			String[] articulosArray = articulosRecomendados.split(",");
@@ -115,7 +116,7 @@ public class ItemsPageServlet  extends HttpServlet{
 
     @Override
     public void init() throws ServletException {
-        notificador=new Cliente("192.168.1.2",2551);        
+        notificador=new Cliente("localhost",2551);        
     }
         
         

@@ -87,7 +87,7 @@ public class AprioriServlet extends HttpServlet {
 Cliente cliente;
     @Override
     public void init() throws ServletException {
-        cliente=new Cliente("192.168.1.2",2550);
+        cliente=new Cliente("localhost",2550);
     }
 // </editor-fold>
 
