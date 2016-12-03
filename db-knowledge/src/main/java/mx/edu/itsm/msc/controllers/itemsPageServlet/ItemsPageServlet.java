@@ -2,6 +2,7 @@ package mx.edu.itsm.msc.controllers.itemsPageServlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import mx.edu.itsm.msc.daos.ArticulosDao;
 
 @WebServlet(name = "itemspage", urlPatterns = {"/itemspage"})
 public class ItemsPageServlet  extends HttpServlet{
@@ -130,8 +133,23 @@ public class ItemsPageServlet  extends HttpServlet{
 		case "populares":
 		default:
 			request.setAttribute("cat", "populares");
+			List<String> masvendidos = ArticulosDao.obtenerMasVendidos();
+			System.out.println("=== Mas vendidos ===");
+			int contador = 1;
+			for (String vendido : masvendidos) {
+				System.out.println(vendido);
+				
+				String articuloListado = ArticulosDao.descripcionYPrecio(Integer.valueOf(vendido));
+				String[] articuloRecomendadoArray = articuloListado.split(",");
+						
+				request.setAttribute("producto" + contador + "_id", articuloRecomendadoArray[0]);
+				request.setAttribute("producto" + contador, articuloRecomendadoArray[1]);
+				contador++;
+			}
+			System.out.println("====================");
 			break;
 		}
+		
 		request.getRequestDispatcher("items-page.jsp").forward(request, response);
 	}
 	

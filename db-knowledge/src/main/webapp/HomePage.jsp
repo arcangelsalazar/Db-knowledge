@@ -5,6 +5,12 @@
 
 <t:genericpage title="Sevilla Dulcería" bodyClass="body2">
 	<jsp:body>
+		<c:if test="${not empty infor}">
+			<div id="success-alert" class="alert alert-success fade in">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Dulceria Sevilla:</strong> Venta concluida exitosamente.
+			</div>
+		</c:if>
 		<style>
 	  		.carousel-inner > .item > img,
 	  		.carousel-inner > .item > a > img {
@@ -59,6 +65,13 @@
 		      <span class="sr-only">Siguiente</span>
 		    </a>
 		  </div>
+		  <script type="text/javascript">
+		$(document).ready (function(){
+			$("#success-alert").fadeTo(5000, 500).slideUp(500, function(){
+				$("#success-alert").slideUp(500); 
+			});
+		});
+		</script>
 	</jsp:body>
 </t:genericpage>
 

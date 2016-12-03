@@ -46,6 +46,9 @@ public class MiCarritoStatusServlet  extends HttpServlet{
 				//Este es el ID del Articulo
 				System.out.println(articulosArray[i]);
 			}
+			session.setAttribute("infor", "infor");
+			articulos = "";
+			session.setAttribute("articulos", articulos);
 			break;
 		case "cancelar":
 		default:
