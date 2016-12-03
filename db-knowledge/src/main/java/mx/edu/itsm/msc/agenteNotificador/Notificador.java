@@ -55,7 +55,7 @@ public class Notificador extends Behaviour {
     	    jip.loadFile("reglas.jip");
     		// parse query
     	    JIPTermParser parser = jip.getTermParser();
-    	    query = parser.parseTerm("?-member(X, [150014])");
+    	    query = parser.parseTerm("transaccion(X,150014)");
     	 // open a synchronous query
         	JIPQuery jipQuery = jip.openSynchronousQuery(query);
         	JIPTerm solution;
